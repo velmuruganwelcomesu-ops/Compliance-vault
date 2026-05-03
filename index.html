@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ComplianceVault Dashboard Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #f4f7f6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .header {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 18pt;
+            letter-spacing: 1px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 9pt;
+            opacity: 0.8;
+        }
+        .summary-ribbon {
+            display: table;
+            width: 100%;
+            margin: 20px 0;
+            border-spacing: 10px 0;
+        }
+        .summary-card {
+            display: table-cell;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-top: 4px solid #ccc;
+        }
+        .card-expired { border-top-color: #dc3545; }
+        .card-critical { border-top-color: #fd7e14; }
+        .card-warning { border-top-color: #ffc107; }
+        .card-safe { border-top-color: #28a745; }
+
+        .summary-card .value {
+            font-size: 20pt;
+            font-weight: bold;
+            display: block;
+        }
+        .summary-card .label {
+            font-size: 8pt;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-left: 5px solid #1a2a3a;
+            padding-left: 10px;
+            margin: 25px 0 15px 0;
+            color: #1a2a3a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 9pt;
+        }
+        th {
+            background-color: #e9ecef;
+            color: #495057;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #dee2e6;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        .status-tag {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 8pt;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .tag-expired { background: #f8d7da; color: #721c24; }
+        .tag-critical { background: #fff3cd; color: #856404; }
+        .tag-warning { background: #e2e3e5; color: #383d41; }
+        .tag-safe { background: #d4edda; color: #155724; }
+
+        .alert-log {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        .alert-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 9pt;
+        }
+        .alert-date {
+            color: #888;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <h1>ComplianceVault</h1>
+            <p>INDUSTRIAL &middot; SAFETY &middot; HR &middot; COMPLIANCE</p>
+        </div>
+        <div style="text-align: right">
+            <p>Status Date: 03 May 2026</p>
+            <p>Report ID: CV-2026-05-03</p>
+        </div>
+    </div>
+
+    <div class="summary-ribbon">
+        <div class="summary-card card-expired">
+            <span class="value">1</span>
+            <span class="label">Expired</span>
+        </div>
+        <div class="summary-card card-critical">
+            <span class="value">4</span>
+            <span class="label">Critical (&lt;30d)</span>
+        </div>
+        <div class="summary-card card-warning">
+            <span class="value">1</span>
+            <span class="label">Warning (&lt;90d)</span>
+        </div>
+        <div class="summary-card card-safe">
+            <span class="value">4</span>
+            <span class="label">Safe</span>
+        </div>
+    </div>
+
+    <h2>Document Status Registry</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Document Name</th>
+                <th>Category</th>
+                <th>Authority</th>
+                <th>Expiry Date</th>
+                <th>Status / Action Required</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Contract Labour Registration</strong></td>
+                <td>HR Compliance</td>
+                <td>Labour Dept</td>
+                <td>10 Apr 2026</td>
+                <td><span class="status-tag tag-expired">Expired 23d ago</span><br>File Form I immediately</td>
+            </tr>
+            <tr>
+                <td><strong>Fire NOC – Plant Building</strong></td>
+                <td>Fire Safety</td>
+                <td>Fire & Rescue Dept</td>
+                <td>08 May 2026</td>
+                <td><span class="status-tag tag-critical">5 days left</span><br>Renewal submitted, awaiting inspection</td>
+            </tr>
+            <tr>
+                <td><strong>Factory License – Unit A</strong></td>
+                <td>License</td>
+                <td>DIPP / Ministry</td>
+                <td>20 May 2026</td>
+                <td><span class="status-tag tag-critical">17 days left</span><br>Renew via Udyam portal</td>
+            </tr>
+            <tr>
+                <td><strong>Boiler Safety Certificate</strong></td>
+                <td>Industrial Safety</td>
+                <td>Chief Inspector of Boilers</td>
+                <td>25 May 2026</td>
+                <td><span class="status-tag tag-critical">22 days left</span><br>Hydrostatic test required</td>
+            </tr>
+            <tr>
+                <td><strong>ISO 45001 – OHS Certification</strong></td>
+                <td>Certification</td>
+                <td>Bureau Veritas</td>
+                <td>01 Jun 2026</td>
+                <td><span class="status-tag tag-critical">29 days left</span><br>Surveillance audit due</td>
+            </tr>
+            <tr>
+                <td><strong>Electrical Installation Safety</strong></td>
+                <td>Electrical Safety</td>
+                <td>Tamil Nadu CEIG</td>
+                <td>15 Jul 2026</td>
+                <td><span class="status-tag tag-warning">73 days left</span><br>Annual inspection by licensed engineer</td>
+            </tr>
+            <tr>
+                <td><strong>Consent to Operate – TNPCB</strong></td>
+                <td>Environmental</td>
+                <td>TN Pollution Control Board</td>
+                <td>31 Aug 2026</td>
+                <td><span class="status-tag tag-safe">120 days left</span><br>Submit Form V with renewal fee</td>
+            </tr>
+            <tr>
+                <td><strong>POSH Training Compliance</strong></td>
+                <td>HR Compliance</td>
+                <td>Internal Committee</td>
+                <td>01 Sept 2026</td>
+                <td><span class="status-tag tag-safe">121 days left</span><br>Annual mandatory training</td>
+            </tr>
+            <tr>
+                <td><strong>Apprenticeship Registration</strong></td>
+                <td>HR Compliance</td>
+                <td>BOAT</td>
+                <td>31 Oct 2026</td>
+                <td><span class="status-tag tag-safe">181 days left</span></td>
+            </tr>
+            <tr>
+                <td><strong>ISO 14001 – Environmental Cert</strong></td>
+                <td>Certification</td>
+                <td>DNV GL</td>
+                <td>20 Dec 2026</td>
+                <td><span class="status-tag tag-safe">231 days left</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Recent Alert Log</h2>
+    <div class="alert-log">
+        <div class="alert-item">
+            <span class="alert-date">03 May 2026</span>
+            <strong>EXPIRED:</strong> "Contract Labour Registration" (HR Compliance) expired 23d ago. Dept: HR.
+        </div>
+        <div class="alert-item">
+            <span class="alert-date">02 May 2026</span>
+            <strong>EXPIRED:</strong> "Contract Labour Registration" (HR Compliance) expired 22d ago. Dept: HR.
+        </div>
+        <div class="alert-item" style="border-bottom: none;">
+            <span class="alert-date">02 May 2026</span>
+            <strong>NOTICE:</strong> "ISO 45001 – OHS Certification" expires in 30 day(s). Authority: Bureau Veritas.
+        </div>
+    </div>
+
+</body>
+</html>
